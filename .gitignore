@@ -1,7 +1,13 @@
+# ============================================================
+# .gitignore — Scrapper & Analysis Monorepo
+# ============================================================
+
 # ---------- OS ----------
 .DS_Store
 Thumbs.db
 Desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
 
 # ---------- Editors / IDEs ----------
 .vscode/
@@ -9,6 +15,9 @@ Desktop.ini
 *.swp
 *.swo
 *.sublime-workspace
+*.sublime-project
+.history/
+*.code-workspace
 
 # ---------- Logs ----------
 *.log
@@ -16,46 +25,99 @@ logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# ---------- Python / Backend ----------
+# ============================================================
+# PYTHON / BACKEND
+# ============================================================
+
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+
+# Virtual environments
 .venv/
 venv/
 env/
 ENV/
 myenv/
+.env_backup/
+
+# Distribution / packaging
 *.egg-info/
+*.egg
 dist/
 build/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+wheels/
+share/python-wheels/
+
+# Test & coverage
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
 .coverage
+.coverage.*
 htmlcov/
 .tox/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
 
-# ---------- Databases ----------
+# Type checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# ============================================================
+# DATABASES
+# ============================================================
+
 *.db
 *.sqlite
 *.sqlite3
 *.db-journal
+*.db-shm
+*.db-wal
 
-# ---------- Playwright / Test artifacts ----------
+# ============================================================
+# PLAYWRIGHT / TEST ARTIFACTS
+# ============================================================
+
 test-results/
 playwright-report/
 blob-report/
 test-results.json
+/test-results/
+/playwright/.cache/
 
-# ---------- Node / Next.js / Frontend ----------
+# ============================================================
+# NODE / NEXT.JS / FRONTEND
+# ============================================================
+
 node_modules/
 .next/
 out/
 .vercel/
+.turbo/
 *.tsbuildinfo
 next-env.d.ts
+
+# Yarn
 .pnp
 .pnp.*
 .yarn/*
@@ -68,12 +130,49 @@ next-env.d.ts
 .yarn/build-state.yml
 .yarn/install-state.gz
 
-# ---------- Environment files (never commit secrets) ----------
+# pnpm
+.pnpm-store/
+
+# Build output
+build/
+dist/
+.cache/
+
+# ============================================================
+# ENVIRONMENT / SECRETS — NEVER COMMIT
+# ============================================================
+
 .env
 .env.*
-!.env.example
+!.env.example          # keep the template
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# ---------- Scratch / temporary ----------
+# ============================================================
+# SCRATCH / TEMPORARY
+# ============================================================
+
 scratch/
 *.tmp
 *.temp
+*.bak
+*.orig
+*.rej
+
+# ============================================================
+# MISC
+# ============================================================
+
+# Python profiling
+*.prof
+
+# Coverage reports
+lcov.info
+
+# Lock files (keep package-lock.json but ignore others if needed)
+# yarn.lock  # uncomment if you want to ignore yarn lock
+
+# Windows specific
+*.lnk
