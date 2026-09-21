@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+playwright
+sqlalchemy
+pydantic
+pydantic-settings
+python-dotenv
+httpx
+pandas
+openpyxl
